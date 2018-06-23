@@ -43,6 +43,7 @@ SERVICE_DAIKIN = 'daikin'
 SERVICE_SABNZBD = 'sabnzbd'
 SERVICE_SAMSUNG_PRINTER = 'samsung_printer'
 SERVICE_HOMEKIT = 'homekit'
+SERVICE_ROKU = 'roku'
 
 CONFIG_ENTRY_HANDLERS = {
     SERVICE_DECONZ: 'deconz',
@@ -59,6 +60,7 @@ SERVICE_HANDLERS = {
     SERVICE_HASSIO: ('hassio', None),
     SERVICE_AXIS: ('axis', None),
     SERVICE_APPLE_TV: ('apple_tv', None),
+    SERVICE_ROKU: ('roku', None),
     SERVICE_WINK: ('wink', None),
     SERVICE_XIAOMI_GW: ('xiaomi_aqara', None),
     SERVICE_TELLDUSLIVE: ('tellduslive', None),
@@ -68,7 +70,7 @@ SERVICE_HANDLERS = {
     SERVICE_KONNECTED: ('konnected', None),
     'panasonic_viera': ('media_player', 'panasonic_viera'),
     'plex_mediaserver': ('media_player', 'plex'),
-    'roku': ('media_player', 'roku'),
+    'sonos': ('media_player', 'sonos'),
     'yamaha': ('media_player', 'yamaha'),
     'logitech_mediaserver': ('media_player', 'squeezebox'),
     'directv': ('media_player', 'directv'),
