@@ -8,7 +8,6 @@ import logging
 
 import voluptuous as vol
 
-from typing import Sequence, TypeVar, Union
 from homeassistant.components.discovery import SERVICE_ROKU
 from homeassistant.const import CONF_HOST, CONF_NAME
 from homeassistant.helpers import discovery
@@ -74,8 +73,7 @@ def scan_for_rokus(hass):
 
 def setup(hass, config):
     """Set up the Roku component."""
-    if DATA_ROKU not in hass.data:
-        hass.data[DATA_ROKU] = {}
+    hass.data[DATA_ROKU] = {}
 
     def service_handler(service):
         """Handle service calls."""
