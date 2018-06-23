@@ -148,6 +148,11 @@ class RokuDevice(MediaPlayerDevice):
         """List of available input sources."""
         return self.channels
 
+    @property
+    def is_on(self):
+        """Return true if device is on."""
+        return True
+
     def media_play_pause(self):
         """Send play/pause command."""
         if self.current_app is not None:
