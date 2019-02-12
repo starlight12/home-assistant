@@ -69,10 +69,11 @@ def setup(hass, base_config):
             elif ex.code == 500:
                 hass.components.persistent_notification.create(
                     "Error:<br />Internal server error."
-                    "Retrying in 60 seconds.",
+                    "Retrying in {} seconds.".format(update_interval),
                     title=NOTIFICATION_TITLE,
                     notification_id=NOTIFICATION_ID)
-                call_later(hass, 60, lambda _: setup(hass, config))
+                call_later(hass, update_interval,
+                           lambda _: setup(hass, config))
             else:
                 hass.components.persistent_notification.create(
                     "Error:<br />Can't communicate with Tesla API.<br />"
