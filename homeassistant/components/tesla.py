@@ -14,9 +14,10 @@ from homeassistant.const import (
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers import discovery
 from homeassistant.helpers.entity import Entity
+from homeassistant.helpers.event import call_later
 from homeassistant.util import slugify
 
-REQUIREMENTS = ['teslajsonpy==0.0.23']
+REQUIREMENTS = ['teslajsonpy==0.0.24']
 
 DOMAIN = 'tesla'
 
@@ -65,6 +66,13 @@ def setup(hass, base_config):
                     "You will need to restart Home Assistant after fixing.",
                     title=NOTIFICATION_TITLE,
                     notification_id=NOTIFICATION_ID)
+            elif ex.code == 500:
+                hass.components.persistent_notification.create(
+                    "Error:<br />Internal server error."
+                    "Retrying in 60 seconds.",
+                    title=NOTIFICATION_TITLE,
+                    notification_id=NOTIFICATION_ID)
+                call_later(hass, 60, lambda _: setup(hass, config))
             else:
                 hass.components.persistent_notification.create(
                     "Error:<br />Can't communicate with Tesla API.<br />"
