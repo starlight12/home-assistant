@@ -19,7 +19,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     """Set up the Tesla binary sensor."""
     devices = [
         TeslaBinarySensor(
-            device, hass.data[TESLA_DOMAIN]['controller'], 'connectivity')
+            device, hass.data[TESLA_DOMAIN]['controller'], device.sensor_type)
         for device in hass.data[TESLA_DOMAIN]['devices']['binary_sensor']]
     add_devices(devices, True)
 
